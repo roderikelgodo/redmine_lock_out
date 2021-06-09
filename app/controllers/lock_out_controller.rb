@@ -7,8 +7,10 @@ class LockOutController < ApplicationController
     now = Time.now
     @dates = []
 
-    # generate last 7 months
-    7.times do |i|
+    # generate last n months (default from '2021-01-01')
+    from = Time.new(Setting.plugin_redmine_lock_out[:lock_out_from].to_d)
+    months = ((now.to_time - from.to_time)/1.month.second).to_i
+    months.times do |i|
       now = now - 1.month
       @dates << LockOutDate.
         where(:month => now.month).

@@ -2,3 +2,7 @@
   <label for="lock_out_day">Day of current month to lock previous month</label>
   <%= text_field_tag 'settings[lock_out_day]', settings[:lock_out_day] %>
 </p>
+<p>
+  <label for="lock_out_day">From which month lock starts to count</label>
+  <%= date_field_tag 'settings[lock_out_from]', settings[:lock_out_from] %>
+</p>
